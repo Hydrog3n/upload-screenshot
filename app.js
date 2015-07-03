@@ -17,7 +17,7 @@ watcher
   {
     fs.exists(path, function(exist)
     {
-      if (exist && ~['jpeg','jpg','png','gif','bmp','ico'].indexOf(p.extname(path).substring(1)))
+      if (exist && ~['jpeg','jpg','png','gif','bmp','ico'].indexOf(p.extname(path).substring(1)) && details.flag == 100352)
       {
         var formData = {
           upload: fs.createReadStream(path)
