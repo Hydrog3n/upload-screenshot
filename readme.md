@@ -21,10 +21,19 @@ nvm alias default 0.12
 
 ```bash
 npm i pm2 -g
-pm2 install upload-screenshot
+```
+### Get sources 
+
+```bash
+git clone https://github.com/Hydrog3n/uplaod-screenshot.git
+cd upload-screenshot
 ```
 
-### Default settings
+### Change Default settings
 
-Your images is uploaded on pix.hydrog3n.fr without API key. 
+You has the settings in settings.json
+Your images is uploaded on http://pix.hydrog3n.fr without API key. 
 Change your screen directory on setting.js by default is /Users/loic/Screenshots
+```bash
+vim settings.json
+```
