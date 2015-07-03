@@ -5,65 +5,70 @@ var copy      = require("copy-paste");
 var notifier  = require('node-notifier');
 var settings  = require('./settings.json');
 var p         = require('path');
+var debug = require('debug')('upload-screenshot')
 
 var watcher = chokidar.watch(settings.dir, {
   ignoreInitial: true,
-  persistent: true
+  persistent: true,
+  ignored: /[\/\\]\./ //ignore dotfiles
 });
 
-watcher
-  .on('ready', function() { console.log('Initial scan complete. Ready for changes.'); })
-  .on('raw', function(event, path, details) 
-  {
-    fs.exists(path, function(exist)
-    {
-      if (exist && ~['jpeg','jpg','png','gif','bmp','ico'].indexOf(p.extname(path).substring(1)) && details.flag == 100352)
-      {
-        var formData = {
-          upload: fs.createReadStream(path)
-        };
-        
-        if (settings.key !== "")
-        {
-          formData.key = settings.key;
-        }
-        
-        request.post({url:settings.urlapi, formData: formData}, function (err, res, body)
-        {
-          if (err) {
-            notifier.notify({
-              'title': 'Error !',
-              'message': err
-            });
-            return console.error('upload failed:', err);
-          }
-          
-          var response = JSON.parse(body);
-          
-          if (response.status_code == 200)
-          {
-            var shortlink = response.data.image_short_url;
-            
-            copy.copy(shortlink, function() 
-            {
-              notifier.notify({
-                'title': 'Uploaded',
-                'message': shortlink,
-                'appIcon': __dirname + '/icones/up.png',
-                'contentImage': path,
-                'open': shortlink
-              });
-            });
-            
-          } else 
-          {
-             notifier.notify({
-                'title': 'Error !',
-                'message': response.status_txt
-              });
-          }
-          
+function isPicture(path) {
+  return !!~['jpeg','jpg','png','gif','bmp','ico']
+    .indexOf(p.extname(path).substring(1));
+}
+
+watcher.on('add', function(path) {
+  if(!isPicture(path))
+    return;
+
+  fs.exists(path, function(exist) {
+    if(!exist) 
+      return;
+
+    var formData = {
+      upload: fs.createReadStream(path)
+    };
+
+    var form = {
+      key: settings.key ? settings.key : undefined
+    }
+
+    debug('Posting picture from path %s to url %s', path, settings.urlapi)
+
+    request.post(settings.urlapi, {formData: formData, form: form}, function (err, res, body) {
+
+      if (err) {
+        notifier.notify({
+          'title': 'Error !',
+          'message': err
         });
+
+        return console.error('upload failed:', err);
       }
+
+      var response = JSON.parse(body);
+
+      if (response.status_code !== 200) {
+        return notifier.notify({
+          'title': 'Error while updating screenshot!',
+          'message': response.status_txt
+        });
+
+      }
+
+      var shortlink = response.data.image_short_url;
+
+      //copy to clipboard
+      copy.copy(shortlink, function() {
+        notifier.notify({
+          'title': 'Uploaded',
+          'message': shortlink,
+          'appIcon': __dirname + '/icones/up.png',
+          'contentImage': path,
+          'open': shortlink
+        });
+      });
     });
-});
+  })
+})
