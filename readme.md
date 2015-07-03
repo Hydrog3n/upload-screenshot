@@ -40,5 +40,6 @@ vim settings.json
 
 ### START 
 ```bash
+npm install
 pm2 start app.js
 ```
