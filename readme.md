@@ -25,7 +25,7 @@ npm i pm2 -g
 ### Get sources 
 
 ```bash
-git clone https://github.com/Hydrog3n/uplaod-screenshot.git
+git clone https://github.com/Hydrog3n/upload-screenshot.git
 cd upload-screenshot
 ```
 

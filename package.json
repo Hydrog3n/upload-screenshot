@@ -23,14 +23,14 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hydrog3n/uplaod-screenshot.git"
+    "url": "git+https://github.com/Hydrog3n/upload-screenshot.git"
   },
   "keywords": [
     "upload",
     "screenshot"
   ],
   "bugs": {
-    "url": "https://github.com/Hydrog3n/uplaod-screenshot/issues"
+    "url": "https://github.com/Hydrog3n/upload-screenshot/issues"
   },
-  "homepage": "https://github.com/Hydrog3n/uplaod-screenshot#readme"
+  "homepage": "https://github.com/Hydrog3n/upload-screenshot#readme"
 }
