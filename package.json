@@ -19,5 +19,18 @@
     "node-notifier": "^4.2.3",
     "path": "^0.11.14",
     "request": "^2.58.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hydrog3n/uplaod-screenshot.git"
+  },
+  "keywords": [
+    "upload",
+    "screenshot"
+  ],
+  "bugs": {
+    "url": "https://github.com/Hydrog3n/uplaod-screenshot/issues"
+  },
+  "homepage": "https://github.com/Hydrog3n/uplaod-screenshot#readme"
 }
