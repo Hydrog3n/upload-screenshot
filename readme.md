@@ -35,6 +35,7 @@ You has the settings in settings.json
 Your images is uploaded on http://pix.hydrog3n.fr without API key. 
 Change your screen directory on setting.js by default is /Users/loic/Screenshots
 ```bash
+cp settings.json.default settings.json
 vim settings.json
 ```
 
