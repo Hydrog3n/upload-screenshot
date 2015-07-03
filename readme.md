@@ -37,3 +37,8 @@ Change your screen directory on setting.js by default is /Users/loic/Screenshots
 ```bash
 vim settings.json
 ```
+
+### START 
+```bash
+pm2 start app.js
+```
