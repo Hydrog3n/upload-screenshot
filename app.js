@@ -5,6 +5,7 @@ var copy      = require("copy-paste");
 var notifier  = require('node-notifier');
 var settings  = require('./settings.json');
 var p         = require('path');
+var debug = require('debug')('upload-screenshot')
 
 var watcher = chokidar.watch(settings.dir, {
   ignoreInitial: true,
@@ -26,11 +27,16 @@ watcher.on('add', function(path) {
       return;
 
     var formData = {
-      upload: fs.createReadStream(path),
-      key: settings.key ? settings.key : undefined
+      upload: fs.createReadStream(path)
     };
 
-    request.post({url: settings.urlapi, formData: formData}, function (err, res, body) {
+    var form = {
+      key: settings.key ? settings.key : undefined
+    }
+
+    debug('Posting picture from path %s to url %s', path, settings.urlapi)
+
+    request.post(settings.urlapi, {formData: formData, form: form}, function (err, res, body) {
 
       if (err) {
         notifier.notify({
