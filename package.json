@@ -13,6 +13,7 @@
   "author": "hydrog3n <contact@loicvaille.ovh>",
   "license": "MIT",
   "dependencies": {
+    "async": "^1.3.0",
     "chokidar": "^1.0.3",
     "copy-paste": "^1.1.2",
     "debug": "^2.2.0",
