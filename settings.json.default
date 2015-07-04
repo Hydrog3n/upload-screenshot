@@ -1,5 +1,11 @@
 {
-	"urlapi":"http://pix.hydrog3n.fr/api",
-	"key":"",
-	"dir":"/Users/hydrog3n/Screenshots"
+	"used":0,
+	"dir":"/Users/hydrog3n/Screenshots",
+	"services": [
+		{
+			"name":"chevereto",
+			"urlapi":"http://pix.hydrog3n.fr/api",
+			"key":""
+		}
+	]
 }
