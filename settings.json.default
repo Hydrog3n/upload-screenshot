@@ -6,6 +6,10 @@
 			"name":"chevereto",
 			"urlapi":"http://pix.hydrog3n.fr/api",
 			"key":""
+		},
+		{
+			"name":"imgur",
+			"clientId":"YourClientID"
 		}
 	]
 }
