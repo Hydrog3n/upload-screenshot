@@ -10,6 +10,11 @@
 		{
 			"name":"imgur",
 			"clientId":"YourClientID"
+		},
+		{
+			"name":"zupmage",
+			"k":"yTbRtAPI0ZMlsOaulVoicoiNniYI4b",
+			"prive":1
 		}
 	]
 }
