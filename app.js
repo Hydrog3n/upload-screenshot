@@ -15,12 +15,19 @@ var watcher = chokidar.watch(settings.dir, {
   ignored: /[\/\\]\./ //ignore dotfiles
 });
 
-var serv = require('./services/'+service.name+'.js');
+try { 
+  var Serv = require('./services/'+service.name);
+  var s = new Serv(service);  
+  
+} catch(e) { 
+  console.error(e);
+  process.exit(1); 
+}
 
 var q = async.queue(function(path, callback) {
 
-  serv.upload(service, path, function(){
-    copyShortLink(serv.shortlink, path);
+  s.upload(path, function(shortlink){
+    copyShortLink(shortlink, path);
   });
   
 }, 1);
