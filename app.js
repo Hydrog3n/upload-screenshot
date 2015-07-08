@@ -25,11 +25,10 @@ try {
 }
 
 var q = async.queue(function(path, callback) {
-
   s.upload(path, function(shortlink){
     copyShortLink(shortlink, path);
+    callback();
   });
-  callback();
 }, 1);
 
 function copyShortLink(shortlink, path) {
