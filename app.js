@@ -29,7 +29,7 @@ var q = async.queue(function(path, callback) {
   s.upload(path, function(shortlink){
     copyShortLink(shortlink, path);
   });
-  
+  callback();
 }, 1);
 
 function copyShortLink(shortlink, path) {
