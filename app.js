@@ -1,12 +1,13 @@
 var chokidar  = require('chokidar');
-var request   = require('request');
-var fs        = require('fs');
 var copy      = require("copy-paste");
 var notifier  = require('node-notifier');
+var fs        = require('fs');
 var settings  = require('./settings.json');
 var p         = require('path');
 var debug     = require('debug')('upload-screenshot');
 var async     = require('async');
+
+var service = settings.services[settings.used]; 
 
 var watcher = chokidar.watch(settings.dir, {
   ignoreInitial: true,
@@ -14,54 +15,35 @@ var watcher = chokidar.watch(settings.dir, {
   ignored: /[\/\\]\./ //ignore dotfiles
 });
 
+try { 
+  var Serv = require('./services/'+service.name);
+  var s = new Serv(service);  
+  
+} catch(e) { 
+  console.error(e);
+  process.exit(1); 
+}
+
 var q = async.queue(function(path, callback) {
 
-  var formData = {
-    upload: fs.createReadStream(path)
-  };
-
-  var form = {
-    key: settings.key ? settings.key : undefined
-  };
-
-  debug('Posting picture from path %s to url %s', path, settings.urlapi)
-
-  request.post(settings.urlapi, {formData: formData, form: form}, function (err, res, body) {
-
-    if (err) {
-      notifier.notify({
-        'title': 'Error !',
-        'message': err
-      });
-
-      return console.error('upload failed:', err);
-    }
-
-    var response = JSON.parse(body);
-
-    if (response.status_code !== 200) {
-      return notifier.notify({
-        'title': 'Error while updating screenshot!',
-        'message': response.status_txt
-      });
-
-    }
-
-    var shortlink = response.data.image_short_url;
-
-    //copy to clipboard
-    copy.copy(shortlink, function() {
-      notifier.notify({
-        'title': 'Uploaded',
-        'message': shortlink,
-        'appIcon': __dirname + '/icones/up.png',
-        'contentImage': path,
-        'open': shortlink
-      });
-    });
+  s.upload(path, function(shortlink){
+    copyShortLink(shortlink, path);
   });
   callback();
 }, 1);
+
+function copyShortLink(shortlink, path) {
+
+  copy.copy(shortlink, function() {
+    notifier.notify({
+      'title': 'Uploaded',
+      'message': shortlink,
+      'appIcon': __dirname + '/icones/up.png',
+      'contentImage': path,
+      'open': shortlink
+    });
+  });
+}
 
 function isPicture(path) {
   return !!~['jpeg','jpg','png','gif','bmp','ico']
@@ -75,8 +57,7 @@ watcher.on('add', function(path) {
   fs.exists(path, function(exist) {
     if(!exist) 
       return;
-
-    q.push(path)
-  })
-    
-})
+      
+    q.push(path);
+  });   
+});

@@ -1,7 +1,6 @@
 # Upload screenshot
 
-Multi OS app for upload your screen on a chevereto hosting (if API enable).
-You can use with my image hosting. 
+Multi-OS app for upload your screen on multiple image hosting (chevereto, imgur).
 
 # Requirements
 
@@ -44,3 +43,8 @@ vim settings.json
 npm install
 pm2 start app.js
 ```
+
+# BUGS 
+
+I test my app on Mac OS X (10.10.4). 
+Please if you use an others OS add a new issue with your OS. 
