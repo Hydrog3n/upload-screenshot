@@ -24,24 +24,19 @@ npm i pm2 -g
 ### Get sources 
 
 ```bash
-git clone https://github.com/Hydrog3n/upload-screenshot.git
-cd upload-screenshot
+pm2 install upload-screenshot
 ```
 
 ### Change Default settings
 
 You has the settings in settings.json
 Your images is uploaded on http://pix.hydrog3n.fr without API key. 
-Change your screen directory on setting.js by default is /Users/loic/Screenshots
+Change your screen directory on setting.js by default is /Users/hydrog3n/Pictures
 ```bash
+cd ~/.pm2/node_modules/upload-screenshot
 cp settings.json.default settings.json
 vim settings.json
-```
-
-### START 
-```bash
-npm install
-pm2 start app.js
+pm2 restart upload-screenshot
 ```
 
 # BUGS 
