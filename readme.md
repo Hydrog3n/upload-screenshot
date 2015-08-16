@@ -1,6 +1,6 @@
 # Upload screenshot
 
-Multi-OS app for upload your screen on multiple image hosting (chevereto, imgur).
+For Mac OS X app for upload your screen on multiple image hosting (chevereto, imgur, zupmage, noelshack).
 
 # Requirements
 

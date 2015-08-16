@@ -19,7 +19,7 @@ try {
   var Serv = require('./services/'+service.name);
   var s = new Serv(service);  
   
-} catch(e) { 
+} catch(e) {
   console.error(e);
   process.exit(1); 
 }
@@ -34,6 +34,7 @@ var q = async.queue(function(path, callback) {
 function copyShortLink(shortlink, path) {
 
   copy.copy(shortlink, function() {
+    
     notifier.notify({
       'title': 'Uploaded',
       'message': shortlink,
