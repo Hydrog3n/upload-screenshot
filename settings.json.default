@@ -15,6 +15,9 @@
       "name":"zupmage",
       "k":"YourAPIKey",
       "prive":1
+    },
+    "noelshack": {
+      "name":"noelshack"
     }
   }
 }
