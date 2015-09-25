@@ -1,3 +1,6 @@
+[![NPM](https://nodei.co/npm/upload-screenshot.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/upload-screenshot/)
+[![NPM](https://nodei.co/npm-dl/upload-screenshot.png?months=3&height=3)](https://nodei.co/npm/upload-screenshot/)
+
 # Upload screenshot
 
 For Mac OS X app for upload your screen on multiple image hosting (chevereto, imgur, zupmage, noelshack).
