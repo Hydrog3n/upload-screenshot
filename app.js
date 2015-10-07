@@ -8,8 +8,7 @@ var debug     = require('debug')('upload-screenshot');
 var async     = require('async');
 
 var service = settings.services[settings.used]; 
-console.log(service);
-console.log(settings.dir);
+
 var watcher = chokidar.watch(settings.dir, {
   ignoreInitial: true,
   persistent: true,
@@ -53,7 +52,6 @@ function isPicture(path) {
 }
 
 watcher.on('add', function(path) {
-  console.log(path);
   if(!isPicture(path))
     return;
 
