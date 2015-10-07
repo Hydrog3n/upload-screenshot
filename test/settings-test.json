@@ -1,4 +1,4 @@
-exports.settings = {
+{
   "used": "chevreto",
   "dir":"/Users/hydrog3n/Pictures",
   "services": {
@@ -18,10 +18,6 @@ exports.settings = {
     },
     "noelshack": {
       "name":"noelshack"
-    },
-    "lutim": {
-			"name":"lutim",
-			"url":"https://lut.im/"
-		}
+    }
   }
 }
