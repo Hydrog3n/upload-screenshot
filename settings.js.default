@@ -1,0 +1,23 @@
+exports.settings = {
+  "used": "chevreto",
+  "dir":"/Users/hydrog3n/Pictures",
+  "services": {
+    "chevreto": {
+      "name":"chevereto",
+      "urlapi":"http://pix.hydrog3n.fr/api",
+      "key":""
+    },
+    "imgur": {
+      "name":"imgur",
+      "clientId":"YourClientID"
+    },
+    "zupmage": {
+      "name":"zupmage",
+      "k":"YourAPIKey",
+      "prive":1
+    },
+    "noelshack": {
+      "name":"noelshack"
+    }
+  }
+}
