@@ -2,13 +2,14 @@ var chokidar  = require('chokidar');
 var copy      = require("copy-paste");
 var notifier  = require('node-notifier');
 var fs        = require('fs');
-var settings  = require('./settings.json');
+var settings  = require('./settings.js').settings;
 var p         = require('path');
 var debug     = require('debug')('upload-screenshot');
 var async     = require('async');
 
 var service = settings.services[settings.used]; 
-
+console.log(service);
+console.log(settings.dir);
 var watcher = chokidar.watch(settings.dir, {
   ignoreInitial: true,
   persistent: true,
@@ -25,6 +26,7 @@ try {
 }
 
 var q = async.queue(function(path, callback) {
+  console.log(path);
   s.upload(path, function(shortlink){
     copyShortLink(shortlink, path);
     callback();
@@ -51,6 +53,7 @@ function isPicture(path) {
 }
 
 watcher.on('add', function(path) {
+  console.log(path);
   if(!isPicture(path))
     return;
 

@@ -37,8 +37,8 @@ Your images is uploaded on http://pix.hydrog3n.fr without API key.
 Change your screen directory on setting.js by default is /Users/hydrog3n/Pictures
 ```bash
 cd ~/.pm2/node_modules/upload-screenshot
-cp settings.json.default settings.json
-vim settings.json
+cp settings.js.default settings.js
+vim settings.js
 pm2 restart upload-screenshot
 ```
 
