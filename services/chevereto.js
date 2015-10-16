@@ -14,7 +14,7 @@ Chevereto.prototype.upload = function(path, callback) {
   var form = {
     key: this.service.key ? this.service.key : undefined
   };
-
+  
   request.post(this.service.urlapi, {formData: formData, form: form}, function (err, res, body) {
     if (err) {
       notifier.notify({

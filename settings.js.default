@@ -18,6 +18,10 @@ exports.settings = {
     },
     "noelshack": {
       "name":"noelshack"
-    }
+    },
+    "lutim": {
+			"name":"lutim",
+			"url":"https://lut.im/"
+		}
   }
 }

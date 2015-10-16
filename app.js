@@ -25,7 +25,6 @@ try {
 }
 
 var q = async.queue(function(path, callback) {
-  console.log(path);
   s.upload(path, function(shortlink){
     copyShortLink(shortlink, path);
     callback();
