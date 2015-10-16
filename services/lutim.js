@@ -1,5 +1,4 @@
 var request   = require('request');
-var form      = require('form-data');
 var fs        = require('fs');
 var notifier  = require('node-notifier');
 
