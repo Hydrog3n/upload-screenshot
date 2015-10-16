@@ -37,7 +37,7 @@ Lutim.prototype.upload = function(path, callback) {
         'message': response.success
       });
     }
-    console.log(body);
+
     var urlShort = url + response.msg.short;
     callback(urlShort);
   });
