@@ -32,7 +32,7 @@ var q = async.queue(function(path, callback) {
 }, 1);
 
 function copyShortLink(shortlink, path) {
-
+  console.log(shortlink);
   copy.copy(shortlink, function() {
     
     notifier.notify({
