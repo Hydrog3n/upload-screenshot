@@ -7,7 +7,7 @@ var p         = require('path');
 var debug     = require('debug')('upload-screenshot');
 var async     = require('async');
 
-var service = settings.services[settings.used]; 
+var service = settings.services[settings.used];
 
 var watcher = chokidar.watch(settings.dir, {
   ignoreInitial: true,
@@ -17,11 +17,11 @@ var watcher = chokidar.watch(settings.dir, {
 
 try { 
   var Serv = require('./services/'+service.name);
-  var s = new Serv(service);  
-  
+  var s = new Serv(service);
+
 } catch(e) {
   console.error(e);
-  process.exit(1); 
+  process.exit(1);
 }
 
 var q = async.queue(function(path, callback) {
@@ -34,7 +34,7 @@ var q = async.queue(function(path, callback) {
 function copyShortLink(shortlink, path) {
   console.log(shortlink);
   copy.copy(shortlink, function() {
-    
+
     notifier.notify({
       'title': 'Uploaded',
       'message': shortlink,
@@ -55,9 +55,9 @@ watcher.on('add', function(path) {
     return;
 
   fs.exists(path, function(exist) {
-    if(!exist) 
+    if(!exist)
       return;
-      
+
     q.push(path);
-  });   
+  });
 });

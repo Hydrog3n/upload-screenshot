@@ -3,10 +3,10 @@ var fs        = require('fs');
 var notifier  = require('node-notifier');
 
 function Noelshack(service) {
-	this.service = service;
-};
+  this.service = service;
+}
 
-Noelshack.prototype.upload = function(path, callback) { 
+Noelshack.prototype.upload = function(path, callback) {
   var formData = {
     filename:path,
     fichier: fs.createReadStream(path)
@@ -18,10 +18,10 @@ Noelshack.prototype.upload = function(path, callback) {
         'title': 'Error !',
         'message': err
       });
-  
+
       return console.error('upload failed:', err);
     }
-    
+
     var response = JSON.parse(body);
     if (response.erreurs !== "null") {
       return notifier.notify({
