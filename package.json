@@ -1,6 +1,6 @@
 {
   "name": "upload-screenshot",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Upload your screenshot",
   "main": "app.js",
   "scripts": {
