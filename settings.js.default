@@ -22,6 +22,10 @@ exports.settings = {
     "lutim": {
       "name": "lutim",
       "url": "https://lut.im/"
+    },
+    "goopics" : {
+      "name": "goopics",
+      "url" : "https://goopics.net/api"
     }
   }
 };
